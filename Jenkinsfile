@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // Ortam değişkenlerini burada tanımlayabilirsiniz.
+        NODE_ENV = 'test'  // Ortam değişkeni tanımladık
     }
 
     stages {
@@ -16,25 +16,20 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                // Build adımlarını buraya ekleyin, örneğin npm, mvn, gradle, vb.
-                sh 'npm install'  // Node.js projesi için örnek
+                sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
-                // Test komutlarını buraya ekleyin
-                sh 'npm test'  // Node.js test komutu
+                sh 'npm test'
             }
         }
 
         stage('Deploy to Test Environment') {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
-                // Burada deploy komutlarını yazabilirsiniz
-                // Örneğin: 
-                // sh 'scp -r dist/* user@server:/path/to/deploy'
                 echo 'Deploy işleminden önce yapılacak adımlar'
             }
         }
@@ -43,7 +38,6 @@ pipeline {
     post {
         always {
             echo 'Temizlik işlemi yapılıyor'
-            // Cleanup işlemleri yapılabilir
         }
         success {
             echo 'Pipeline başarıyla tamamlandı!'
@@ -53,5 +47,3 @@ pipeline {
         }
     }
 }
-
-
