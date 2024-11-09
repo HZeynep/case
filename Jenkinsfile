@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_ENV = 'test'  // Ortam değişkeni tanımladık
+        NODE_ENV = 'test'  // Ortam değişkenini burada doğru şekilde tanımladık...
     }
 
     stages {
@@ -16,20 +16,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                sh 'npm install'
+                // Burada npm install komutunu çalıştırıyoruz
+                sh 'npm install'  // Node.js bağımlılıklarını yükler
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
-                sh 'npm test'
+                // Testlerin doğru çalıştığından emin olun
+                sh 'npm test'  // npm test komutunu çalıştırarak testleri başlatır
             }
         }
 
         stage('Deploy to Test Environment') {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
+                // Test ortamına deploy komutu buraya eklenebilir
                 echo 'Deploy işleminden önce yapılacak adımlar'
             }
         }
