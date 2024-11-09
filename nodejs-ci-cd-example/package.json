@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-ci-cd-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"  // Burada, Mocha testlerini çalıştıracak komutu belirtiyoruz
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
