@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_ENV = 'test'  // Ortam değişkenini burada  tanımladım...
+        NODE_ENV = 'test ortamı'  // Ortam değişkenini burada  tanımladım...
     }
 
     stages {
