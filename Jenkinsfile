@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_ENV = 'test ortamı'
+        NODE_ENV = 'development'
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Uygulama derleniyor'
                 dir('nodejs-ci-cd-example') {
-                    sh 'npm install'
+                    sh 'npm install --only=dev'
                 }
             }
         }
