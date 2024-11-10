@@ -13,6 +13,16 @@ pipeline {
             }
         }
 
+        stage('Clean') {
+            steps {
+                echo 'Sadece eski bağımlılıkları temizliyoruz'
+                dir('nodejs-ci-cd-example') {
+                    sh 'rm -rf node_modules' // package-lock.json'u koruyarak bağımlılıkları korur
+                }
+            }
+        }
+
+
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
