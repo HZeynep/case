@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_ENV = 'test ortamı'  // Ortam değişkenini burada  tanımladım....
+        NODE_ENV = 'test ortamı'
     }
 
     stages {
@@ -16,23 +16,26 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                // nodejs-ci-cd-example klasörüne geçip npm install komutunu çalıştırıyoruz
-                sh 'cd nodejs-ci-cd-example && npm install'
+                // Burada, nodejs-ci-cd-example dizinine geçiyoruz ve npm install komutunu çalıştırıyoruz
+                dir('nodejs-ci-cd-example') {
+                    sh 'npm install' 
+                }
             }
         }
-        
+
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
                 // Testlerin doğru çalıştığından emin olun
-                sh 'npm test'  // npm test komutunu çalıştırarak testleri başlatır
+                dir('nodejs-ci-cd-example') {
+                    sh 'npm test'
+                }
             }
         }
 
         stage('Deploy to Test Environment') {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
-                // Test ortamına deploy komutu buraya eklenebilir
                 echo 'Deploy işleminden önce yapılacak adımlar'
             }
         }
