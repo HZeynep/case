@@ -16,11 +16,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                // Burada npm install komutunu çalıştırıyoruz
-                sh 'npm install'  // Node.js bağımlılıklarını yükler
+                // nodejs-ci-cd-example klasörüne geçip npm install komutunu çalıştırıyoruz
+                sh 'cd nodejs-ci-cd-example && npm install'
             }
         }
-
+        
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
