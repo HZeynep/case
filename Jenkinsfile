@@ -16,27 +16,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                // Burada, nodejs-ci-cd-example dizinine geçiyoruz ve npm install komutunu çalıştırıyoruz
-                dir('nodejs-ci-cd-example') {
-                    sh 'npm install' 
-                }
+                sh 'npm install'
+                sh 'npm install chai mocha --save-dev'  // Chai ve Mocha modüllerini yükle
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
-                // Testlerin doğru çalıştığından emin olun
-                dir('nodejs-ci-cd-example') {
-                    sh 'npm test'
-                }
+                sh 'npm test'
             }
         }
 
         stage('Deploy to Test Environment') {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
-                echo 'Deploy işleminden önce yapılacak adımlar'
             }
         }
     }
