@@ -15,19 +15,24 @@ pipeline {
 
         stage('Clean') {
             steps {
-                echo 'Sadece eski bağımlılıkları temizliyoruz'
+                echo 'Bağımlılıklar temizleniyor'
                 dir('nodejs-ci-cd-example') {
-                    sh 'rm -rf node_modules' // package-lock.json'u koruyarak bağımlılıkları korur
+                    // Önce npm önbelleğini temizliyoruz
+                    sh 'npm cache clean --force'
+                    // Sonra eski bağımlılıkları kaldırıyoruz
+                    sh 'rm -rf node_modules package-lock.json'
                 }
             }
         }
-
 
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
                 dir('nodejs-ci-cd-example') {
+                    // Ana bağımlılıkları yüklüyoruz
                     sh 'npm install'
+                    // Eksik olabilecek test bağımlılıklarını yüklüyoruz
+                    sh 'npm install chai mocha --save-dev'
                 }
             }
         }
