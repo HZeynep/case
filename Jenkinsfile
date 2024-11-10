@@ -16,15 +16,18 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Uygulama derleniyor'
-                sh 'npm install'
-                sh 'npm install chai mocha --save-dev'  // Chai ve Mocha modüllerini yükle
+                dir('nodejs-ci-cd-example') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Testler çalıştırılıyor'
-                sh 'npm test'
+                dir('nodejs-ci-cd-example') {
+                    sh 'npm test'
+                }
             }
         }
 
