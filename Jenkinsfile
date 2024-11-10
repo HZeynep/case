@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Uygulama derleniyor'
                 dir('nodejs-ci-cd-example') {
-                    sh 'npm install --only=dev'
+                    sh 'npm install'
                 }
             }
         }
@@ -35,18 +35,3 @@ pipeline {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Temizlik işlemi yapılıyor'
-        }
-        success {
-            echo 'Pipeline başarıyla tamamlandı!'
-        }
-        failure {
-            echo 'Pipeline başarısız oldu!'
-        }
-    }
-}
