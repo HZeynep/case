@@ -35,3 +35,18 @@ pipeline {
             steps {
                 echo 'Test ortamına dağıtım yapılıyor'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Temizlik işlemi yapılıyor'
+        }
+        success {
+            echo 'Pipeline başarıyla tamamlandı!'
+        }
+        failure {
+            echo 'Pipeline başarısız oldu!'
+        }
+    }
+}
