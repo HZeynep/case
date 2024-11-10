@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'GitHub reposundan kod çekiliyor'
-                git branch: 'main', url: 'https://github.com/bujihalil1936/nodejs.git'
+                git branch: 'main', url: 'https://github.com/bujihalil1936/case.git'
             }
         }
 
