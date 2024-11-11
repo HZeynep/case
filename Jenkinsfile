@@ -9,9 +9,11 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'GitHub reposundan kod çekiliyor'
+                sshagent(credentials: ['GitHub SSH Key ID']) {
                 git branch: 'main', url: 'git@github.com:HZeynep/case.git'
             }
         }
+    }      
 
         stage('Clean') {
             steps {
