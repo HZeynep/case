@@ -9,11 +9,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'GitHub reposundan kod çekiliyor'
-                sshagent(credentials: ['796d5472-c9cd-4e02-b817-e4e7330e1045']) {
                 git branch: 'main', url: 'git@github.com:HZeynep/case.git'
             }
-        }
-    }      
+        }      
 
         stage('Clean') {
             steps {
